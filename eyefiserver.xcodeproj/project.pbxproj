@@ -1,0 +1,221 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		275716CC16DF4A07007E03AD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 275716CB16DF4A07007E03AD /* main.c */; };
+		275716CE16DF4A07007E03AD /* eyefiserver.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 275716CD16DF4A07007E03AD /* eyefiserver.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		275716C616DF4A07007E03AD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				275716CE16DF4A07007E03AD /* eyefiserver.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		275716C816DF4A07007E03AD /* eyefiserver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = eyefiserver; sourceTree = BUILT_PRODUCTS_DIR; };
+		275716CB16DF4A07007E03AD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		275716CD16DF4A07007E03AD /* eyefiserver.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = eyefiserver.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		275716C516DF4A07007E03AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		275716BF16DF4A07007E03AD = {
+			isa = PBXGroup;
+			children = (
+				275716CA16DF4A07007E03AD /* eyefiserver */,
+				275716C916DF4A07007E03AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		275716C916DF4A07007E03AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				275716C816DF4A07007E03AD /* eyefiserver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		275716CA16DF4A07007E03AD /* eyefiserver */ = {
+			isa = PBXGroup;
+			children = (
+				275716CB16DF4A07007E03AD /* main.c */,
+				275716CD16DF4A07007E03AD /* eyefiserver.1 */,
+			);
+			path = eyefiserver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		275716C716DF4A07007E03AD /* eyefiserver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275716D116DF4A07007E03AD /* Build configuration list for PBXNativeTarget "eyefiserver" */;
+			buildPhases = (
+				275716C416DF4A07007E03AD /* Sources */,
+				275716C516DF4A07007E03AD /* Frameworks */,
+				275716C616DF4A07007E03AD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = eyefiserver;
+			productName = eyefiserver;
+			productReference = 275716C816DF4A07007E03AD /* eyefiserver */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		275716C016DF4A07007E03AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Michael Russell";
+			};
+			buildConfigurationList = 275716C316DF4A07007E03AD /* Build configuration list for PBXProject "eyefiserver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 275716BF16DF4A07007E03AD;
+			productRefGroup = 275716C916DF4A07007E03AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				275716C716DF4A07007E03AD /* eyefiserver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		275716C416DF4A07007E03AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275716CC16DF4A07007E03AD /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		275716CF16DF4A07007E03AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		275716D016DF4A07007E03AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		275716D216DF4A07007E03AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		275716D316DF4A07007E03AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		275716C316DF4A07007E03AD /* Build configuration list for PBXProject "eyefiserver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275716CF16DF4A07007E03AD /* Debug */,
+				275716D016DF4A07007E03AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275716D116DF4A07007E03AD /* Build configuration list for PBXNativeTarget "eyefiserver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275716D216DF4A07007E03AD /* Debug */,
+				275716D316DF4A07007E03AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 275716C016DF4A07007E03AD /* Project object */;
+}
