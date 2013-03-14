@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		275716CC16DF4A07007E03AD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 275716CB16DF4A07007E03AD /* main.c */; };
 		275716CE16DF4A07007E03AD /* eyefiserver.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 275716CD16DF4A07007E03AD /* eyefiserver.1 */; };
+		275716D516DF4A5F007E03AD /* libmicrohttpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 275716D416DF4A5F007E03AD /* libmicrohttpd.a */; };
+		27905B8416E4AE800016ADE0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27905B8316E4AE800016ADE0 /* libxml2.2.dylib */; };
+		27905B8A16E737600016ADE0 /* hexString.c in Sources */ = {isa = PBXBuildFile; fileRef = 27905B8816E737600016ADE0 /* hexString.c */; };
+		27905B8C16E755800016ADE0 /* libarchive.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27905B8B16E755800016ADE0 /* libarchive.2.dylib */; };
+		27C379D116DF649500B8E243 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C379CF16DF649500B8E243 /* md5.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +33,13 @@
 		275716C816DF4A07007E03AD /* eyefiserver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = eyefiserver; sourceTree = BUILT_PRODUCTS_DIR; };
 		275716CB16DF4A07007E03AD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		275716CD16DF4A07007E03AD /* eyefiserver.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = eyefiserver.1; sourceTree = "<group>"; };
+		275716D416DF4A5F007E03AD /* libmicrohttpd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmicrohttpd.a; path = ../../../../../usr/local/lib/libmicrohttpd.a; sourceTree = "<group>"; };
+		27905B8316E4AE800016ADE0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		27905B8816E737600016ADE0 /* hexString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hexString.c; sourceTree = "<group>"; };
+		27905B8916E737600016ADE0 /* hexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hexString.h; sourceTree = "<group>"; };
+		27905B8B16E755800016ADE0 /* libarchive.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.2.dylib; path = ../../../../../usr/lib/libarchive.2.dylib; sourceTree = "<group>"; };
+		27C379CF16DF649500B8E243 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		27C379D016DF649500B8E243 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27905B8C16E755800016ADE0 /* libarchive.2.dylib in Frameworks */,
+				27905B8416E4AE800016ADE0 /* libxml2.2.dylib in Frameworks */,
+				275716D516DF4A5F007E03AD /* libmicrohttpd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +59,9 @@
 		275716BF16DF4A07007E03AD = {
 			isa = PBXGroup;
 			children = (
+				27905B8B16E755800016ADE0 /* libarchive.2.dylib */,
+				27905B8316E4AE800016ADE0 /* libxml2.2.dylib */,
+				275716D416DF4A5F007E03AD /* libmicrohttpd.a */,
 				275716CA16DF4A07007E03AD /* eyefiserver */,
 				275716C916DF4A07007E03AD /* Products */,
 			);
@@ -60,6 +78,10 @@
 		275716CA16DF4A07007E03AD /* eyefiserver */ = {
 			isa = PBXGroup;
 			children = (
+				27905B8816E737600016ADE0 /* hexString.c */,
+				27905B8916E737600016ADE0 /* hexString.h */,
+				27C379CF16DF649500B8E243 /* md5.c */,
+				27C379D016DF649500B8E243 /* md5.h */,
 				275716CB16DF4A07007E03AD /* main.c */,
 				275716CD16DF4A07007E03AD /* eyefiserver.1 */,
 			);
@@ -118,6 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				275716CC16DF4A07007E03AD /* main.c in Sources */,
+				27C379D116DF649500B8E243 /* md5.c in Sources */,
+				27905B8A16E737600016ADE0 /* hexString.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +174,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/usr/local/include/**",
+					/usr/include/libxml2,
+				);
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -176,6 +205,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
@@ -214,6 +244,7 @@
 				275716D316DF4A07007E03AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
