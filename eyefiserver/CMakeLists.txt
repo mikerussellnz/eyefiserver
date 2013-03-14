@@ -9,6 +9,8 @@ set(CMAKE_MODULE_PATH
 find_package(LibXml2)
 find_package(LibMicroHTTPD)
 
+add_subdirectory(geolocate)
+
 include_directories(${LIBXML2_INCLUDE_DIR} ${MHD_INCLUDE_DIR})
 
 add_executable(eyefiserver main.c hexString.c)
