@@ -1,0 +1,3 @@
+[submodule "eyefiserver/geolocate"]
+	path = eyefiserver/geolocate
+	url = https://github.com/mikerussellnz/geolocate.git
