@@ -6,7 +6,6 @@ set(CMAKE_MODULE_PATH
 	"${CMAKE_SOURCE_DIR}/"
 )
 
-find_package(CURL)
 find_package(LibXml2)
 find_package(LibMicroHTTPD)
 
