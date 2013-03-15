@@ -72,7 +72,7 @@ static void free_response(struct Response *response) {
     free(response);
 }
 
-static xmlNodePtr find_xml_node(xmlNodePtr node, char *search) {
+static xmlNodePtr find_xml_node(xmlNodePtr node, const char *search) {
     xmlNode *cur_node = NULL;
     
     for (cur_node = node; cur_node; cur_node = cur_node->next) {
@@ -91,7 +91,7 @@ static xmlNodePtr find_xml_node(xmlNodePtr node, char *search) {
     return NULL;
 }
 
-static char *get_xml_node_value(xmlNodePtr node, char *search) {
+static char *get_xml_node_value(xmlNodePtr node, const char *search) {
     xmlNodePtr curr = NULL;
     
     curr = find_xml_node(node, search);
@@ -103,7 +103,7 @@ static char *get_xml_node_value(xmlNodePtr node, char *search) {
     return result;
 }
 
-static xmlNodePtr add_xml_child_node(xmlNodePtr parent, char *name, char *value) {
+static xmlNodePtr add_xml_child_node(xmlNodePtr parent, const char *name, const char *value) {
     xmlNodePtr node = xmlNewNode(NULL, BAD_CAST name);
     xmlAddChild(node, xmlNewText(BAD_CAST value));
     xmlAddChild(parent, node);
@@ -115,7 +115,7 @@ static void xml_doc_to_bytes(xmlDocPtr doc, char **data, size_t *size) {
     int xml_size;
     xmlDocDumpMemory(doc, &raw_xml, &xml_size);
     
-    *data = malloc(xml_size);
+    *data = (char *)malloc(xml_size);
     memcpy(*data, raw_xml, xml_size);
     *size = xml_size;
     
@@ -139,7 +139,7 @@ static struct Response *process_start_session(struct Request *request) {
     char *transfer_mode_timestamp = get_xml_node_value(session_node, "transfermodetimestamp");
         
     size_t raw_length = strlen(mac_address) + strlen(cnonce) + strlen(EYEFI_UPLOAD_KEY) + 1;
-    char *raw_credential = malloc(raw_length);
+    char *raw_credential = (char *)malloc(raw_length);
     snprintf(raw_credential, raw_length, "%s%s%s", mac_address, cnonce, EYEFI_UPLOAD_KEY);
     
     printf("credential string before md5 %s\n", raw_credential);
@@ -243,13 +243,13 @@ static struct Response *process_get_photo_status(struct Request *request) {
     
     xmlNodePtr root_element = xmlDocGetRootElement(request_doc);
     xmlNodePtr photo_status_node = find_xml_node(root_element, "GetPhotoStatus")->children;
-    char *credential = get_xml_node_value(photo_status_node, "credential");
-    char *macaddress = get_xml_node_value(photo_status_node, "macaddress");
-    char *filename = get_xml_node_value(photo_status_node, "filename");
-    char *filesize = get_xml_node_value(photo_status_node, "filesize");
-    char *filesignature = get_xml_node_value(photo_status_node, "filesignature");
-    char *flags = get_xml_node_value(photo_status_node, "flags");
-        
+    const char *credential = get_xml_node_value(photo_status_node, "credential");
+    const char *macaddress = get_xml_node_value(photo_status_node, "macaddress");
+    const char *filename = get_xml_node_value(photo_status_node, "filename");
+    const char *filesize = get_xml_node_value(photo_status_node, "filesize");
+    const char *filesignature = get_xml_node_value(photo_status_node, "filesignature");
+    const char *flags = get_xml_node_value(photo_status_node, "flags");
+
     xmlDocPtr response_doc = xmlNewDoc(BAD_CAST XML_DEFAULT_VERSION);
     
     xmlNodePtr root_node = xmlNewNode(NULL, BAD_CAST "Envelope");
@@ -294,13 +294,13 @@ static struct Response *process_upload_photo(struct Request *request) {
     
     xmlNodePtr root_element = xmlDocGetRootElement(request_doc);
     xmlNodePtr data_node = find_xml_node(root_element, "UploadPhoto")->children;
-    char *file_id = get_xml_node_value(data_node, "fileid");
-    char *macaddress = get_xml_node_value(data_node, "macaddress");
-    char *filename = get_xml_node_value(data_node, "filename");
-    char *filesize = get_xml_node_value(data_node, "filesize");
-    char *file_signature = get_xml_node_value(data_node, "filesignature");
-    char *encryption = get_xml_node_value(data_node, "encryption");
-    char *flags = get_xml_node_value(data_node, "flags");
+    const char *file_id = get_xml_node_value(data_node, "fileid");
+    const char *macaddress = get_xml_node_value(data_node, "macaddress");
+    const char *filename = get_xml_node_value(data_node, "filename");
+    const char *filesize = get_xml_node_value(data_node, "filesize");
+    const char *file_signature = get_xml_node_value(data_node, "filesignature");
+    const char *encryption = get_xml_node_value(data_node, "encryption");
+    const char *flags = get_xml_node_value(data_node, "flags");
     
     if (request->main_file) {
         fclose(request->main_file);
@@ -354,11 +354,11 @@ static int post_iterator (void *cls,
                const char *transfer_encoding,
                const char *data, uint64_t off, size_t size)
 {
-    struct Request *request = cls;
+    struct Request *request = (struct Request *)cls;
     
     if (strcmp(SOAP_ENVELOPE_KEY, key) == 0) {
         if (request->data == NULL) {
-            request->data = malloc(4096);
+            request->data = (char *)malloc(4096);
         }
         memcpy(request->data + request->data_length, data, size);
         request->data_length+= size;
@@ -389,7 +389,7 @@ static int header_iterator(void *cls,
     struct Request *request = (struct Request *)cls;
     
     if (strcmp(key, SOAP_ACTION_HEADER) == 0) {
-        request->soap_method = malloc(strlen(value) + 1);
+        request->soap_method = (char *)malloc(strlen(value) + 1);
         strcpy(request->soap_method, value);
     }
  
@@ -402,17 +402,16 @@ static int process_request(void *cls,
           const char *method,
           const char *version,
           const char *upload_data, size_t *upload_data_size, void **ptr) {
-    const char *me = cls;
     struct MHD_Response *response;
     int ret;
         
     struct Request *request;
-    request = *ptr;
+    request = (struct Request *)*ptr;
     
     if (request == NULL) {
         printf("New Request: %s %s\n", method, url);
 
-        request = calloc(1, sizeof(struct Request));
+        request = (struct Request*)calloc(1, sizeof(struct Request));
         *ptr = request;
 
         MHD_get_connection_values(connection, MHD_HEADER_KIND, &header_iterator, request);
@@ -424,8 +423,9 @@ static int process_request(void *cls,
             
             const char *encoding = MHD_lookup_connection_value (connection, MHD_HEADER_KIND, MHD_HTTP_HEADER_CONTENT_TYPE);
             if (encoding != NULL) {
-                request->soap_method = ACTION_UPLOAD_PHOTO;
-                request->pp = MHD_create_post_processor(connection, 1024, &post_iterator, request);
+                request->soap_method = (char *)malloc(strlen(ACTION_UPLOAD_PHOTO) + 1);
+        	strcpy(request->soap_method, ACTION_UPLOAD_PHOTO);
+		request->pp = MHD_create_post_processor(connection, 1024, &post_iterator, request);
                 
                 if (request->pp == NULL) {
                     printf("Error creating processor\n");
@@ -433,7 +433,7 @@ static int process_request(void *cls,
                 }
             } else {
                 request->data_length = 0;
-                request->data = malloc(request->content_length);
+                request->data = (char *)malloc(request->content_length);
             }
         }
         
@@ -507,7 +507,8 @@ static int process_request(void *cls,
     
     if (0 == strcmp(method, MHD_HTTP_METHOD_GET)) {
         *ptr = NULL;
-        response = MHD_create_response_from_buffer(strlen (me), (void *)me, MHD_RESPMEM_PERSISTENT);
+	const char *response_value = PAGE;
+        response = MHD_create_response_from_buffer(strlen(response_value), (void *)response_value, MHD_RESPMEM_PERSISTENT);
         ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
         MHD_destroy_response(response);
         return ret;
@@ -526,7 +527,7 @@ int main (int argc, char *const *argv) {
                           // MHD_USE_THREAD_PER_CONNECTION | MHD_USE_DEBUG | MHD_USE_POLL,
                           // MHD_USE_THREAD_PER_CONNECTION | MHD_USE_DEBUG,
                           port,
-                          NULL, NULL, &process_request, PAGE,
+                          NULL, NULL, &process_request, NULL,
                           MHD_OPTION_CONNECTION_TIMEOUT, (unsigned int) 120,
                           MHD_OPTION_END);
     if (http_server == NULL) {
